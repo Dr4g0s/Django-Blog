@@ -1,0 +1,29 @@
+<nav class="blog-pagination justify-content-center d-flex">
+  <ul class="pagination">
+    {% if page.has_previous %}
+      <li class="page-item">
+        <a href="?page={{ page.previous_page_number }}" class="page-link" aria-label="Previous">
+          <span aria-hidden="true">
+            <span class="lnr lnr-arrow-left">Back</span>
+          </span>
+        </a>
+      </li>
+    {% endif %}
+    {% if page.paginator.num_pages > 1 %}
+      {% with ''|center:page.paginator.num_pages as range %}
+        {% for _ in range %}
+          <li class="page-item"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+        {% endfor %}
+      {% endwith %}
+    {% endif %}
+    {% if page.has_next %}
+      <li class="page-item">
+        <a href="?page={{ page.next_page_number }}" class="page-link" aria-label="Next">
+          <span aria-hidden="true">
+            <span class="lnr lnr-arrow-right">Next</span>
+          </span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

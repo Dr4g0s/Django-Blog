@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Search Result{% endblock  %}
+
+
+{% block content %}
+<section class="blog-area section">
+  <div class="container">
+    <h2>Searched for '{{ query }}'</h2>
+    <div class="row">
+      {% for post in result %}
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="single-post post-style-1">
+            <div class="blog-image"><img src="{{ post.image.url }}"></div>
+            <a class="avatar" href="{{ post.get_absolute_url }}"><img src="{% static 'img/a.jpg' %}"></a>
+            <div class="blog-info">
+              <h4 class="title"><a href="{{ post.get_absolute_url }}"><b>{{ post.title }}</b></a></h4>
+              <ul class="post-footer">
+                <li><a><i class="ion-heart"></i>{{ post.likes }}</a></li>
+                <li><a><i class="ion-chatbubble"></i>{{ post.comments|length }}</a></li>
+                <li><a><i class="ion-eye"></i>{{ post.views }}</a></li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock  %}

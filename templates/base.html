@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% endblock %}</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+		<link href="{% static 'common-css/bootstrap.css' %}" rel="stylesheet">
+		<link href="{% static 'common-css/ionicons.css' %}" rel="stylesheet">
+		<link href="{% static 'category/css/styles.css' %}" rel="stylesheet">
+		<link href="{% static 'category/css/responsive.css' %}" rel="stylesheet">
+		<link href="{% static 'single-post-2/css/styles.css' %}" rel="stylesheet">
+		<link href="{% static 'single-post-2/css/responsive.css' %}" rel="stylesheet">
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	</head>
+	<body >
+		<header>
+			<div class="container-fluid position-relative no-side-padding">
+				<a href="{% url 'blog:post_list' %}" class="logo"><img src="{% static 'img/logo.png' %}"></a>
+				<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+				<ul class="main-menu visible-on-click" id="main-menu">
+					<li><a href="{% url 'blog:post_list' %}">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="{% url 'blog:contact' %}">Contact</a></li>
+				</ul>
+				<div class="src-area">
+					<form method="get" action="{% url 'blog:post_search' %}">
+						{% csrf_token %}
+						<button class="src-btn" type="submit"><i class="fa fa-search"></i></button>
+						<input class="src-input" name="query" type="text" placeholder="Type of search">
+					</form>
+				</div>
+			</div>
+		</header>
+
+		<div class="slider" style="height: 300px; width: 100%; background-image: url({% static 'img/slider.jpg' %}); background-size: cover;"></div><!-- slider -->
+
+		{% block content %}{% endblock  %}
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div class="footer-section">
+							<a class="logo" href="{% url 'blog:post_list' %}"><img src="{% static 'img/logo.png' %}"></a>
+							<ul class="icons">
+								<li><a href="https://facebook.com/"><i class="fab fa-facebook-f" style="color:blue"></i></a></li>
+								<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="https://instagram.com/"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="https://pinterest.com/"><i class="fab fa-pinterest"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="{% static 'common-js/jquery-3.1.1.min.js' %}"></script>
+		<script src="{% static 'common-js/tether.min.js' %}"></script>
+		<script src="{% static 'common-js/bootstrap.js' %}"></script>
+		<script src="{% static 'common-js/scripts.js' %}"></script>
+	</body>
+</html>

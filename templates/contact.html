@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Contact Us{% endblock  %}
+
+
+{% block content %}
+	<section class="contact-page-area section-gap">
+		<div class="container">
+			<div class="row" style="padding-top:50px">
+				<div class="col-lg-4 d-flex flex-column address-wrap">
+					<div class="single-contact-address d-flex flex-row">
+						<div class="icon">
+							<span class="lnr lnr-home"></span>
+						</div>
+						<div class="contact-details">
+							<h5>Egypt, Zagazig</h5>
+							<p>Al sharqueyah</p>
+						</div>
+					</div>
+					<div class="single-contact-address d-flex flex-row">
+						<div class="icon">
+							<span class="lnr lnr-phone-handset"></span>
+						</div>
+						<div class="contact-details">
+							<h5>+2 (012) 3456 7890</h5>
+							<p>Mon to Fri 9am to 6 pm</p>
+						</div>
+					</div>
+					<div class="single-contact-address d-flex flex-row">
+						<div class="icon">
+							<span class="lnr lnr-envelope"></span>
+						</div>
+						<div class="contact-details">
+							<h5>hunter.me33@gmail.com</h5>
+							<p>Send us your question anytime!</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<form class="form-area " id="myForm" action="." method="post" class="contact-form text-right">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-lg-6 form-group">
+								{{ form.name }}
+
+								{{ form.email }}
+
+								{{ form.subject }}
+							</div>
+							<div class="col-lg-6 form-group">
+								{{ form.message }}
+							</div>
+							<div class="col-lg-12 d-flex justify-content-between">
+								<div class="alert-msg" style="text-align: left;"></div>
+								<button class="genric-btn primary circle text-uppercase" type="submit" style="float: right;">Send Message</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock  %}
